@@ -1,0 +1,15 @@
+.tab-menu {
+  display: flex;
+
+  button {
+      padding: 10px 20px;
+      border: none;
+      background-color: #f0f0f0; // 기본 배경색
+      cursor: pointer;
+
+      &.active {
+          background-color: #2ecc71; // 활성화 시 배경색
+          color: white; // 활성화 시 글자색
+      }
+  }
+}
