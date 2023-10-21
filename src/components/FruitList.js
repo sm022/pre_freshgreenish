@@ -65,7 +65,7 @@ function FruitList() {
                             {/* 추가로 필요한 옵션들 */}
                         </select>
                     </div>
-                    <div className="fruit-type">{fruit.type}</div> {/* 국산 또는 냉동 수입 표시 */}
+                    <div className="fruit-type"></div> {/* 국산 또는 냉동 수입 표시 */}
                 </div>
             ))}
         </div>
