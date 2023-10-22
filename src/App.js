@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import MainPage from '../src/pages/Mainpage'; // MainPage 컴포넌트를 임포트
+import MainPage from './pages/Cart'; // MainPage 컴포넌트를 임포트
 
 function App() {
   return (

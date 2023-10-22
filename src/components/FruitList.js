@@ -1,12 +1,10 @@
 import React, { useState } from 'react';
 import '../styles/FruitList.scss';
 import CheckIcon from './CheckIcon';
+import mockData from '../services/cartMockData.json'
 
 function FruitList() {
-    const [fruits, setFruits] = useState([
-        { id: 1, name: '포도', price: 8000, quantity: 1, deliveryCycle: '주 1회', type: '국산' },
-        { id: 2, name: '사과', price: 5000, quantity: 1, deliveryCycle: '주 1회', type: '냉동 수입' },
-    ]);
+    const [fruits, setFruits] = useState(mockData);
     
     const [selectedFruits, setSelectedFruits] = useState([]);
 
@@ -43,11 +41,11 @@ function FruitList() {
                     onClick={() => toggleSelectFruit(fruit.id)}>
                     <CheckIcon isChecked={selectedFruits.includes(fruit.id)} />
                     </button>
-                        <button className="fruit-delete-btn">
+                        {/* <button className="fruit-delete-btn">
                             <span className="close-icon"></span>
-                        </button>  {/* 삭제 아이콘 버튼 */}
+                        </button>  삭제 아이콘 버튼 */}
                     </div>
-                    {/* <img src={/*과일 이미지 경로*/} alt={fruit.name} className="fruit-image"/> 과일 이미지 추가 */}
+                    <img src={fruit.image} alt={fruit.name} className="fruit-image"/> {/*과일 이미지 추가 */}
                     <span className="fruit-name">{fruit.name}</span>
                     <span className="fruit-price">{fruit.price}원</span> {/* 가격 표시 추가 */}
                     <div className="quantity-control">
