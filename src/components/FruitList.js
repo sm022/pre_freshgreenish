@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import '../styles/FruitList.scss';
 import CheckIcon from './CheckIcon';
+import QuantityControl from './QuantityControl';
 import mockData from '../services/cartMockData.json'
 
 function FruitList() {
@@ -48,11 +49,7 @@ function FruitList() {
                     <img src={fruit.image} alt={fruit.name} className="fruit-image"/> {/*과일 이미지 추가 */}
                     <span className="fruit-name">{fruit.name}</span>
                     <span className="fruit-price">{fruit.price}원</span> {/* 가격 표시 추가 */}
-                    <div className="quantity-control">
-                        <button onClick={() => handleQuantityChange(fruit.id, -1)}>-</button>
-                        <span>{fruit.quantity}</span>
-                        <button onClick={() => handleQuantityChange(fruit.id, 1)}>+</button>
-                    </div>
+                    <QuantityControl value={fruit.quantity} onChange={(change) => handleQuantityChange(fruit.id, change)} />
                     <div className="delivery-cycle-control">
                         <select
                             value={fruit.deliveryCycle}

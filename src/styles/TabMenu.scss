@@ -3,9 +3,9 @@
   background-color: #f6f6f6;
   border-radius: 5px;
   overflow: hidden;
-  margin-bottom: 20px; // 탭 간의 간격
+  margin-bottom: 20px;
 
-  .tab-item {
+  > .tab-item {  // '>'를 사용하여 .tab-menu의 직계 자식인 .tab-item만 선택
       &:not(.active) {
           background-color: white;
       }
@@ -14,7 +14,7 @@
           background-color: #e9e9e9;
       }
 
-      button {
+      > button {  // '>'를 사용하여 .tab-item의 직계 자식인 button만 선택
           display: block;
           width: 100%;
           padding: 15px 20px;
@@ -30,15 +30,15 @@
           }
 
           &::after {
-              content: '\25BC';  // 아래 화살표
+              content: '\25BC';
               float: right;
               transform: scaleY(0.6);
           }
       }
 
-      &.active button {
+      &.active > button {  // 활성화된 .tab-item의 직계 자식인 button만 선택
           &::after {
-              transform: scaleY(-0.6);  // 활성화 상태에서는 화살표 방향 변경
+              transform: scaleY(-0.6);
           }
       }
   }
