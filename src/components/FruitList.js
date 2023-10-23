@@ -4,8 +4,19 @@ import CheckIcon from './CheckIcon';
 import QuantityControl from './QuantityControl';
 import mockData from '../services/cartMockData.json'
 
-function FruitList() {
-    const [fruits, setFruits] = useState(mockData);
+function FruitList({ currentTab, fruits, setFruits }) {
+
+    const getFilteredFruits = () => {
+        if (currentTab === "국산 과일") {
+            return fruits.filter(fruit => fruit.type === "국산");
+        } else if (currentTab === "냉동 과일") {
+           return fruits.filter(fruit => fruit.type === "냉동");
+        } else if (currentTab === "수입 과일") {
+            return fruits.filter(fruit => fruit.type === "수입");
+        } else {
+            return fruits;
+        }
+    }
     
     const [selectedFruits, setSelectedFruits] = useState([]);
 
@@ -35,7 +46,7 @@ function FruitList() {
 
     return (
         <div className="fruit-list">
-            {fruits.map((fruit) => (
+            {getFilteredFruits().map((fruit) => (
                 <div key={fruit.id} className="fruit-item">
                     <div className="fruit-selection">
                     <button className={`fruit-select-btn ${selectedFruits.includes(fruit.id) ? 'selected' : ''}`}
@@ -48,7 +59,6 @@ function FruitList() {
                     </div>
                     <img src={fruit.image} alt={fruit.name} className="fruit-image"/> {/*과일 이미지 추가 */}
                     <span className="fruit-name">{fruit.name}</span>
-                    <span className="fruit-price">{fruit.price}원</span> {/* 가격 표시 추가 */}
                     <QuantityControl value={fruit.quantity} onChange={(change) => handleQuantityChange(fruit.id, change)} />
                     <div className="delivery-cycle-control">
                         <select
@@ -59,6 +69,7 @@ function FruitList() {
                             <option value="주 2회">주 2회</option>
                             {/* 추가로 필요한 옵션들 */}
                         </select>
+                    <span className="fruit-price">{fruit.price}원</span> {/* 가격 표시 추가 */}
                     </div>
                     <div className="fruit-type"></div> {/* 국산 또는 냉동 수입 표시 */}
                 </div>

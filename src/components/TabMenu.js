@@ -17,7 +17,7 @@ function TabMenu(props) {
 
     return (
         <div className="tab-menu">
-            {['국산', '냉동', '수입'].map((tab) => (
+            {['국산 과일', '냉동 과일', '수입 과일'].map((tab) => (
                 <div key={tab} className={activeTab === tab ? 'tab-item active' : 'tab-item'}>
                     <button onClick={() => handleTabClick(tab)}>{tab}</button>
                     {activeTab === tab && props.children}

@@ -29,7 +29,7 @@
 .submit-button {
   width: 100%;
   padding: 15px;
-  background-color: #4caf50;
+  background-color: #8FBE88;
   color: white;
   border: none;
   border-radius: 4px;
@@ -41,6 +41,6 @@
   transition: background-color 0.3s;
 
   &:hover {
-      background-color: darken($color: #4caf50, $amount: 10%);
+      background-color: darken($color: #8FBE88, $amount: 10%);
   }
 }
