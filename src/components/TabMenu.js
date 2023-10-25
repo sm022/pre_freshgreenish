@@ -1,14 +1,17 @@
-import React, { useState } from 'react';
+import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { setCurrentTab } from '../slices/TabSlice'; 
 import '../styles/TabMenu.scss';
 
 function TabMenu(props) {
-    const [activeTab, setActiveTab] = useState(null);
+    const dispatch = useDispatch();
+    const currentTab = useSelector(state => state.tab.currentTab);
 
     const handleTabClick = (tab) => {
-        if (activeTab === tab) {
-            setActiveTab(null);  // 이미 활성화된 탭을 다시 클릭하면 내용을 접는다.
+        if (currentTab === tab) {
+            dispatch(setCurrentTab(null)); // 이미 활성화된 탭을 다시 클릭하면 내용을 접는다.
         } else {
-            setActiveTab(tab);
+            dispatch(setCurrentTab(tab));
             if (props.onTabChange) {  // 탭이 변경되면 부모 컴포넌트에 알림
                 props.onTabChange(tab);
             }
@@ -18,9 +21,9 @@ function TabMenu(props) {
     return (
         <div className="tab-menu">
             {['국산 과일', '냉동 과일', '수입 과일'].map((tab) => (
-                <div key={tab} className={activeTab === tab ? 'tab-item active' : 'tab-item'}>
+                <div key={tab} className={currentTab === tab ? 'tab-item active' : 'tab-item'}>
                     <button onClick={() => handleTabClick(tab)}>{tab}</button>
-                    {activeTab === tab && props.children}
+                    {currentTab === tab && props.children}
                 </div>
             ))}
         </div>

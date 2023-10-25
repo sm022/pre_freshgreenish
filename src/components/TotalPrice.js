@@ -1,8 +1,10 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 import '../styles/TotalPrice.scss';
 
-function TotalPrice({ fruits }) {
-    // fruits가 존재하지 않거나 배열이 아닌 경우, totalPrice를 0으로 초기화
+function TotalPrice() {
+    const fruits = useSelector(state => state.fruits.fruits);
+
     if (!fruits || !Array.isArray(fruits)) {
         return (
             <div className="total-price">

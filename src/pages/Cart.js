@@ -1,4 +1,7 @@
 import React, { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { setCurrentTab } from '../slices/TabSlice';
+import { setFruits } from '../slices/fruitListSlice';
 import TabMenu from '../components/TabMenu';
 import FruitList from '../components/FruitList';
 import TotalPrice from '../components/TotalPrice';
@@ -6,13 +9,12 @@ import mockData from '../services/cartMockData.json'
 import '../styles/Cart.scss';
 
 function Cart() {
-
-    const [currentTab, setCurrentTab] = useState("국산 과일");
-    const [fruits, setFruits] = useState(mockData);
-    
+    const dispatch = useDispatch();
+    const currentTab = useSelector(state => state.fruits.currentTab);
+    const fruits = useSelector(state => state.fruits.fruits);
 
     const handleTabChange = (tab) => {
-        setCurrentTab(tab);
+        dispatch(setCurrentTab(tab));
     }
 
     return (

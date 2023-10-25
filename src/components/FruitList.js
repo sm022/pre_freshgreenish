@@ -1,11 +1,21 @@
 import React, { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { setCurrentTab} from '../slices/TabSlice';
+import { changeQuantity } from '../slices/QuantitySlice';
+import { toggleSelectFruit } from '../slices/SelectedFruitsSlice';
+import { setFruits, changeDeliveryCycle, deleteFruit } from '../slices/fruitListSlice';
 import '../styles/FruitList.scss';
 import CheckIcon from './CheckIcon';
 import DeleteIcon from './DeleteIcon';
 import QuantityControl from './QuantityControl';
 import mockData from '../services/cartMockData.json'
 
-function FruitList({ currentTab, fruits, setFruits }) {
+function FruitList() {
+
+    const dispatch = useDispatch();
+    const currentTab = useSelector(state => state.fruits.currentTab);
+    const fruits = useSelector(state => state.fruits.fruits);
+    const selectedFruits = useSelector(state => state.selectedFruits.selectedFruits);
 
     const getFilteredFruits = () => {
         if (currentTab === "국산 과일") {
@@ -19,34 +29,13 @@ function FruitList({ currentTab, fruits, setFruits }) {
         }
     }
     
-    const [selectedFruits, setSelectedFruits] = useState([]);
-
-    const toggleSelectFruit = (id) => {
-        setSelectedFruits(prevSelected =>
-            prevSelected.includes(id) ? prevSelected.filter(fruitId => fruitId !== id) : [...prevSelected, id]
-        );
-        console.log(selectedFruits);  // 상태 출력
-    };
-    
-    const handleQuantityChange = (id, change) => {
-        setFruits(prevFruits =>
-            prevFruits.map(fruit =>
-                fruit.id === id ? { ...fruit, quantity: fruit.quantity + change } : fruit
-            )
-        );
-    };
 
     const handleDeliveryCycleChange = (id, cycle) => {
-        setFruits(prevFruits =>
-            prevFruits.map(fruit =>
-                fruit.id === id ? { ...fruit, deliveryCycle: cycle } : fruit
-            )
-        );
+        dispatch(changeDeliveryCycle({ id, cycle }));
     };
 
     const handleDeleteFruit = (id) => {
-        const newFruits = fruits.filter(fruit => fruit.id !== id);
-        setFruits(newFruits);
+        dispatch(deleteFruit(id));
     };
 
 
@@ -62,7 +51,7 @@ function FruitList({ currentTab, fruits, setFruits }) {
                     </div>
                     <img src={fruit.image} alt={fruit.name} className="fruit-image"/> {/*과일 이미지 추가 */}
                     <span className="fruit-name">{fruit.name}</span>
-                    <QuantityControl value={fruit.quantity} onChange={(change) => handleQuantityChange(fruit.id, change)} />
+                    <QuantityControl fruitId={fruit.id} quantity={fruit.quantity} onChange={(change) => changeQuantity(fruit.id, change)} />
                     <div className="delivery-cycle-control">
                         <select
                             value={fruit.deliveryCycle}
