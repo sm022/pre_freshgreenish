@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import '../styles/FruitList.scss';
 import CheckIcon from './CheckIcon';
+import DeleteIcon from './DeleteIcon';
 import QuantityControl from './QuantityControl';
 import mockData from '../services/cartMockData.json'
 
@@ -43,6 +44,11 @@ function FruitList({ currentTab, fruits, setFruits }) {
         );
     };
 
+    const handleDeleteFruit = (id) => {
+        const newFruits = fruits.filter(fruit => fruit.id !== id);
+        setFruits(newFruits);
+    };
+
 
     return (
         <div className="fruit-list">
@@ -53,9 +59,6 @@ function FruitList({ currentTab, fruits, setFruits }) {
                     onClick={() => toggleSelectFruit(fruit.id)}>
                     <CheckIcon isChecked={selectedFruits.includes(fruit.id)} />
                     </button>
-                        {/* <button className="fruit-delete-btn">
-                            <span className="close-icon"></span>
-                        </button>  삭제 아이콘 버튼 */}
                     </div>
                     <img src={fruit.image} alt={fruit.name} className="fruit-image"/> {/*과일 이미지 추가 */}
                     <span className="fruit-name">{fruit.name}</span>
@@ -70,6 +73,7 @@ function FruitList({ currentTab, fruits, setFruits }) {
                             {/* 추가로 필요한 옵션들 */}
                         </select>
                     <span className="fruit-price">{fruit.price}원</span> {/* 가격 표시 추가 */}
+                    <DeleteIcon onDelete={() => handleDeleteFruit(fruit.id)} />
                     </div>
                     <div className="fruit-type"></div> {/* 국산 또는 냉동 수입 표시 */}
                 </div>

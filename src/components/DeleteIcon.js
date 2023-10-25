@@ -1,11 +1,13 @@
 import React from 'react';
+import deleteIconImage from '../assets/icon/Close.svg'
 
 function DeleteIcon({ onDelete }) {
-    return (
-        <button className="delete-icon-btn" onClick={onDelete}>
-            <span className="close-icon"></span> {/* 실제 아이콘을 넣으셔야 합니다 */}
-        </button>
-    );
+  return (
+      <button className="delete-icon-btn" onClick={onDelete}>
+          <img src={deleteIconImage} alt="Delete" className="close-icon"/>
+      </button>
+  );
 }
+
 
 export default DeleteIcon;
