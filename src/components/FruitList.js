@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { setCurrentTab} from '../slices/TabSlice';
-import { changeQuantity } from '../slices/QuantitySlice';
+import { changeQuantity } from '../slices/fruitListSlice';
 import { toggleSelectFruit } from '../slices/SelectedFruitsSlice';
 import { setFruits, changeDeliveryCycle, deleteFruit } from '../slices/fruitListSlice';
 import '../styles/FruitList.scss';
@@ -45,13 +45,13 @@ function FruitList() {
                 <div key={fruit.id} className="fruit-item">
                     <div className="fruit-selection">
                     <button className={`fruit-select-btn ${selectedFruits.includes(fruit.id) ? 'selected' : ''}`}
-                    onClick={() => toggleSelectFruit(fruit.id)}>
+                    onClick={() => dispatch(toggleSelectFruit(fruit.id))}>
                     <CheckIcon isChecked={selectedFruits.includes(fruit.id)} />
                     </button>
                     </div>
                     <img src={fruit.image} alt={fruit.name} className="fruit-image"/> {/*과일 이미지 추가 */}
                     <span className="fruit-name">{fruit.name}</span>
-                    <QuantityControl fruitId={fruit.id} quantity={fruit.quantity} onChange={(change) => changeQuantity(fruit.id, change)} />
+                    <QuantityControl fruitId={fruit.id} quantity={fruit.quantity} />
                     <div className="delivery-cycle-control">
                         <select
                             value={fruit.deliveryCycle}
