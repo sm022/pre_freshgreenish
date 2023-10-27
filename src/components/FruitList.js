@@ -15,7 +15,7 @@ import mockData from '../services/cartMockData.json'
 function FruitList() {
 
     const dispatch = useDispatch();
-    const currentTab = useSelector(state => state.fruits.currentTab);
+    const currentTab = useSelector(state => state.tab.currentTab);
     const fruits = useSelector(state => state.fruits.fruits);
     const selectedFruits = useSelector(state => state.selectedFruits.selectedFruits);
 
