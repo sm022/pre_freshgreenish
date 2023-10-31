@@ -6,10 +6,10 @@ import { selectAggregateExpectedDate } from '../slices/deliveryDateSlice';
 import TabMenu from '../components/TabMenu';
 import FruitList from '../components/FruitList';
 import TotalPrice from '../components/TotalPrice';
-import mockData from '../services/cartMockData.json'
-import '../styles/Cart.scss';
+import mockData from '../services/PayMockData.json'
+// import '../styles/Cart.scss';
 
-function Cart() {
+function Payment() {
     const dispatch = useDispatch();
     const currentTab = useSelector(state => state.fruits.currentTab);
     const fruits = useSelector(state => state.fruits.fruits);
@@ -34,4 +34,4 @@ function Cart() {
     );
 }
 
-export default Cart;
+export default Payment;
