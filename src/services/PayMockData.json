@@ -1,21 +1,15 @@
-[
-  {
-      "id": 1,
-      "name": "포도",
-      "price": 880,
-      "quantity": 5,
-      "deliveryCycle": "주간",
-      "type": "국산",
-      "image": "/assets/fruit/grape.jpg"
+{
+  "user": {
+      "name": "",
+      "recipient": "",
+      "address": "",
+      "detailAddress": "",
+      "deliveryNotes": "",
+      "contact": ""
   },
-  {
-      "id": 2,
-      "name": "사과",
-      "price": 580,
-      "quantity": 5,
-      "deliveryCycle": "월간",
-      "type": "국산",
-      "image": "/assets/fruit/apple.jpg"
+  "payment": {
+      "method": "",
+      "amount": 0,
+      "termsAgreed": false
   }
-  
-]
+}
