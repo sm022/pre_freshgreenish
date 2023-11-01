@@ -1,0 +1,85 @@
+.PaymentContainer {
+  font-family: sans-serif; // 사용하는 폰트에 따라 변경해주세요.
+  width: 80%; // 적절한 폭으로 조절 가능
+  margin: 0 auto;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  background-color: #fff;
+  
+  h2 {
+      margin-top: 10px;
+      font-weight: bold;
+      text-align: center;
+  }
+
+  .inputGroup {
+      margin: 20px 0;
+      border-bottom: 1px solid #eee;
+      label {
+          display: block;
+          margin-bottom: 10px;
+          font-weight: bold;
+      }
+      input {
+          width: 100%;
+          padding: 10px;
+          border: 1px solid #ccc;
+          border-radius: 4px;
+      }
+  }
+
+  .paymentMethods {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 20px;
+
+      .method {
+          display: flex;
+          align-items: center;
+          padding: 10px;
+          border: 1px solid #ccc;
+          border-radius: 4px;
+          cursor: pointer;
+          img {
+              margin-right: 10px;
+          }
+      }
+  }
+
+  .price {
+      margin-top: 20px;
+      font-weight: bold;
+      font-size: 20px;
+  }
+
+  .terms {
+      margin-top: 20px;
+
+      .termItem {
+          display: flex;
+          align-items: center;
+          margin-bottom: 10px;
+          input[type="checkbox"] {
+              margin-right: 10px;
+          }
+      }
+  }
+
+  .submitButton {
+      display: block;
+      width: 100%;
+      padding: 10px 0;
+      background-color: #5cb85c;
+      color: #fff;
+      text-align: center;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+
+      &:hover {
+          background-color: #449d44;
+      }
+  }
+}
+
